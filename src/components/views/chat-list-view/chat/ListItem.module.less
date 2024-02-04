@@ -1,0 +1,53 @@
+@import "../../../../styles/colors.less";
+@darkBackground: #0d1117;
+@lightText: #c9d1d9;
+@primaryAccent: #6a7175;
+@borderColor: #30363d;
+@hoverBackground: #161b22;
+@activeBackground: #2d2f36;
+
+.chat_user_item {
+  display: flex;
+  align-items: center;
+  background-color: @darkBackground;
+  border-bottom: 1px solid @borderColor;
+  padding: 10px;
+  color: @lightText;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+
+  &.active {
+    background-color: @activeBackground;
+
+    &:hover {
+      background-color: @activeBackground;
+    }
+  }
+
+  &:hover {
+    background-color: @hoverBackground;
+  }
+
+  div:first-child {
+    margin-right: 10px;
+    background-color: @primaryAccent;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  div:last-child {
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

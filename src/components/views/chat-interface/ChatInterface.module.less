@@ -1,0 +1,44 @@
+@import "../../../styles/colors.less";
+
+.chatInterface {
+  display: flex;
+  background-color: @chat-interface-background-color;
+  max-width: 1600px;
+  min-width: 748px;
+  margin: 0 auto;
+  align-items: stretch;
+  color: @message-text-color;
+  height: calc(100vh - 40px);
+  overflow: hidden;
+
+  @media (max-width: 820px) {
+    overflow-x: auto;
+    min-width: 748px;
+    border: 1px solid red;
+  }
+
+  .left_navigation,
+  .message_window {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin: 0px;
+  }
+
+  .left_navigation {
+    flex: 1;
+    min-width: 420px;
+    background-color: @left-navigation-background-color;
+  }
+
+  .message_window {
+    flex: 2;
+    min-width: 400px;
+    border-left: 1px solid @chat-window-border-color;
+    background-image: url("../../../assets/bg_image.jpeg");
+    background-size: 20%; // Cover the entire area of the container
+    background-position: center; // Center the background image within the container
+    background-repeat: repeat; // Do not repeat the background image
+    position: relative; // Necessary if you're going to overlay text or other elements on top
+  }
+}
