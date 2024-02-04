@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 import styles from "./Menu.module.less";
 import { useDispatch } from "react-redux";
@@ -16,6 +16,10 @@ const Menu = ({ currentChatId }) => {
       <button onClick={onDeleteClick}>Delete Chat</button>
     </div>
   );
+};
+
+Menu.propTypes = {
+  currentChatId: PropTypes.string.isRequired,
 };
 
 export default Menu;

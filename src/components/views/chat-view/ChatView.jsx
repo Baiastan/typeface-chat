@@ -14,10 +14,6 @@ const ChatView = () => {
   const currentUser = useSelector((state) => state.recipients.currentUser);
   const recipients = useSelector((state) => state.recipients.recipients);
 
-  useEffect(() => {
-    console.log("user change");
-  }, [currentUser]);
-
   return (
     <>
       <ChangeUser currentUser={currentUser} recipients={recipients} />
