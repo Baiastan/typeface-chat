@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Chat from "./chat/ListItem";
+import ListItem from "./chat/ListItem";
 import { setCurrentChatId } from "../../../store/chat/chat-slice";
 import { setCurrentRecipient } from "../../../store/recipients/recipients-slice";
 
 import styles from "./ChatListView.module.less";
+import { current } from "immer";
 
 const ChatListView = () => {
   const [activeChatId, setActiveChatId] = useState(null);
   const recipients = useSelector((state) => state.recipients.recipients);
+  const currentUser = useSelector((state) => state.recipients.currentUser);
   const dispatch = useDispatch();
 
   const handleChatClick = (event) => {
@@ -18,7 +20,7 @@ const ChatListView = () => {
       const parsedRecipient = JSON.parse(user);
 
       setActiveChatId(parsedRecipient.user_id);
-      dispatch(setCurrentChatId(parsedRecipient));
+      dispatch(setCurrentChatId({ currentRecipient: parsedRecipient, currentUser }));
       dispatch(setCurrentRecipient(parsedRecipient));
     }
   };
@@ -26,8 +28,11 @@ const ChatListView = () => {
   return (
     <div className={styles.chatListView}>
       <ul onClick={handleChatClick}>
+        <ListItem key={currentUser.user_id} recipient={currentUser} isActive={currentUser.user_id === activeChatId} />
         {recipients.map((user) => {
-          return <Chat key={user.user_id} chat={user} isActive={user.user_id === activeChatId} />;
+          if (user.user_id !== currentUser.user_id) {
+            return <ListItem key={user.user_id} recipient={user} isActive={user.user_id === activeChatId} />;
+          }
         })}
       </ul>
     </div>

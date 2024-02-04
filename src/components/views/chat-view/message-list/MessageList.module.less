@@ -1,0 +1,52 @@
+.messageWrapper {
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+
+  .messageListContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 15px;
+
+    .message {
+      max-width: 50%;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: end;
+      height: 100%;
+      padding: 5px 8px;
+      border-radius: 5px;
+      color: #fff;
+      position: relative;
+      min-width: 100px;
+    }
+
+    .received {
+      background-color: #2a3942;
+      align-self: flex-start;
+    }
+
+    .sent {
+      background-color: #015c4b;
+      align-self: flex-end;
+    }
+
+    .message_content {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .message_info {
+      font-size: 0.75rem;
+      position: absolute;
+      text-align: right;
+      padding-left: 8px;
+      color: #b1b1b1;
+      right: 5px;
+      bottom: 1px;
+    }
+  }
+}

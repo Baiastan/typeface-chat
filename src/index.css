@@ -8,9 +8,10 @@
 
 body {
   margin: 0;
+
   background-color: #0d1217;
-  overflow: hidden;
   padding: 20px;
+  padding: auto;
 }
 
 @media (max-width: 748px) {
@@ -25,4 +26,31 @@ body {
   body {
     padding: 0;
   }
+}
+
+/* For Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #2a3942;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #6b7b8c;
+
+  border: 3px solid #2a3942;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #6b7b8c #2a3942;
+}
+
+.no_message_global {
+  text-align: center;
+  padding: 10px;
+  color: gold;
+  margin-top: 20px;
 }

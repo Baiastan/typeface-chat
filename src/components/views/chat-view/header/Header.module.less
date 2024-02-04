@@ -1,6 +1,26 @@
-.header_item {
+.chatHeader {
+  display: flex;
   background-color: #1f2c33;
-  &:hover {
+  justify-content: space-between;
+  align-items: baseline;
+
+  .user {
+    margin-right: 15px;
+    padding: 15px;
+    position: fixed;
+    right: 35px;
+    top: 10px;
+
+    span {
+      padding-right: 5px;
+    }
+  }
+
+  .recipient_card {
     background-color: #1f2c33;
+    border: none;
+    &:hover {
+      background-color: #1f2c33;
+    }
   }
 }

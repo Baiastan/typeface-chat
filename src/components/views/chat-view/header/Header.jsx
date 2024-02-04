@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import ListItem from "../../chat-list-view/chat/ListItem";
+import Menu from "../../../common/Menu";
 
 import styles from "./Header.module.less";
 
-const Header = ({ currentRecipient, className }) => {
+const Header = ({ currentRecipient, currentChatId }) => {
   return (
-    <div className={className}>
-      <ListItem chat={currentRecipient} className={styles.header_item} />
+    <div className={styles.chatHeader}>
+      <ListItem recipient={currentRecipient} className={styles.recipient_card} />
+      <Menu currentChatId={currentChatId} />
     </div>
   );
 };
@@ -17,7 +19,8 @@ Header.propTypes = {
     user_name: PropTypes.string,
     profile_photo: PropTypes.string,
   }),
-  className: PropTypes.string,
+  currentUser: PropTypes.object,
+  recipients: PropTypes.array.isRequired,
 };
 
 export default Header;

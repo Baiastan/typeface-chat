@@ -16,24 +16,36 @@ const chatSlice = createSlice({
       );
     },
     setCurrentChatId: (state, action) => {
-      state.current_chat_id = action.payload.user_id;
+      if (action.payload === "reset") {
+        state.current_chat_id = "";
+        return;
+      }
+
+      let sourceUserId = action.payload.currentUser.user_id;
+      let destinationUserId = action.payload.currentRecipient.user_id;
+
+      let chatId = [sourceUserId, destinationUserId].sort().join("-");
+
+      state.current_chat_id = chatId;
       const chats = { ...state.chats };
-      if (!chats[action.payload.user_id]) {
+      if (!chats[chatId]) {
         console.log("creating new messages");
-        state.chats[action.payload.user_id] = { messages: [], recipient: action.payload };
+        state.chats[chatId] = {
+          messages: [],
+          recipient: action.payload.currentRecipient,
+          sender: action.payload.currentUser,
+        };
       }
     },
 
     addMessage: (state, action) => {
       console.log("Message added");
 
-      console.log(action.payload);
-
       state.chats[action.payload.chat_id]?.messages.push(action.payload.data);
     },
     deleteChat: (state, action) => {
       console.log("Message deleted");
-      delete state.chats[action.chat_id];
+      state.chats[action.payload].messages = [];
     },
   },
 });
