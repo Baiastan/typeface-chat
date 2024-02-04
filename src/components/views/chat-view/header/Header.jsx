@@ -4,11 +4,12 @@ import Menu from "../../../common/Menu";
 
 import styles from "./Header.module.less";
 
-const Header = ({ currentRecipient, currentChatId }) => {
+const Header = ({ currentRecipient, currentChatId, currentChatMessages }) => {
+  const { messages } = currentChatMessages;
   return (
     <div className={styles.chatHeader}>
       <ListItem recipient={currentRecipient} className={styles.recipient_card} />
-      <Menu currentChatId={currentChatId} />
+      {messages.length > 0 && <Menu currentChatId={currentChatId} />}
     </div>
   );
 };
@@ -19,8 +20,19 @@ Header.propTypes = {
     user_name: PropTypes.string,
     profile_photo: PropTypes.string,
   }),
+  currentChatMessages: PropTypes.object,
   currentUser: PropTypes.object,
-  recipients: PropTypes.array.isRequired,
+  currentChatId: PropTypes.string.isRequired,
+  recipients: PropTypes.array,
+};
+
+Header.defaultProps = {
+  className: "",
+  currentChatMessages: {
+    messages: [],
+    recipient: {},
+    sender: {},
+  },
 };
 
 export default Header;

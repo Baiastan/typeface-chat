@@ -58,7 +58,7 @@ MessageList.propTypes = {
 
 MessageList.defaultProps = {
   className: "",
-  currentChat: {
+  currentChatMessages: {
     messages: [],
     recipient: {},
     sender: {},

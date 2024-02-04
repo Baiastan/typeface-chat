@@ -37,6 +37,7 @@ const MessageForm = ({ currentChatId, currentRecipient, currentUser }) => {
           setText(e.currentTarget.value);
         }}
         value={text}
+        placeholder="Type a message here"
       />
       <button type="submit">Send</button>
     </form>

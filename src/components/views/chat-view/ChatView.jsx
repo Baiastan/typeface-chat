@@ -19,7 +19,11 @@ const ChatView = () => {
       <ChangeUser currentUser={currentUser} recipients={recipients} />
       {currentChatId ? (
         <div className={styles.chatView}>
-          <Header currentRecipient={currentRecipient} currentChatId={currentChatId} />
+          <Header
+            currentRecipient={currentRecipient}
+            currentChatId={currentChatId}
+            currentChatMessages={currentChatMessages}
+          />
           <MessageList currentChatMessages={currentChatMessages || {}} currentUser={currentUser} />
           <ChatFooter currentChatId={currentChatId} currentRecipient={currentRecipient} currentUser={currentUser} />
         </div>
