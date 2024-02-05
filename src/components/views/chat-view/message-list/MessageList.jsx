@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 import styles from "./MessageList.module.less";
 import { useEffect, useRef } from "react";
+import Message from "./message/Message";
 
 const MessageList = ({ currentChatMessages, currentUser }) => {
   const messageEndRef = useRef(null);
@@ -20,21 +21,21 @@ const MessageList = ({ currentChatMessages, currentUser }) => {
   return (
     <>
       <div className={styles.messageWrapper}>
-        <div className={styles.messageListContainer}>
+        <div className={styles.scrollContainer}>
           {messages.map((message) => {
             const isSentByCurrentUser = message.message_from.user_id === currentUser.user_id;
-            const messageClass = isSentByCurrentUser ? "sent" : "received";
 
             return (
-              <div key={message.message_id} className={`${styles[messageClass]} ${styles.message}`}>
-                <div className={styles.message_content}>{message.content}</div>
-                <div className={styles.message_info}>{formatDate(message.created_at)}</div>
-              </div>
+              <Message
+                key={message.message_id}
+                sent={isSentByCurrentUser}
+                content={message.content}
+                date={formatDate(message.created_at)}
+              />
             );
           })}
+          <div ref={messageEndRef} />
         </div>
-
-        <div ref={messageEndRef} />
       </div>
       {!messages.length && (
         <div className={"no_message_global"}>Send and Receive messagaes without keeping your phone online</div>
