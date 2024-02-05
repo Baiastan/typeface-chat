@@ -11,7 +11,7 @@ export const users = [
   },
   {
     user_id: "17899057856",
-    user_name: "Britney Spierce",
+    user_name: "Britney Spears",
     profile_photo: "B",
   },
   {
@@ -21,7 +21,7 @@ export const users = [
   },
   {
     user_id: "1312690674",
-    user_name: "Jonny Depp",
+    user_name: "Johnny Depp",
     profile_photo: "J",
   },
 ];
@@ -39,7 +39,7 @@ export const usersMap = new Map([
     17899057856,
     {
       user_id: "17899057856",
-      user_name: "Britney Spierce",
+      user_name: "Britney Spears",
       profile_photo: "B",
     },
   ],
@@ -55,7 +55,7 @@ export const usersMap = new Map([
     1312690674,
     {
       user_id: "1312690674",
-      user_name: "Jonny Depp",
+      user_name: "Johnny Depp",
       profile_photo: "J",
     },
   ],
